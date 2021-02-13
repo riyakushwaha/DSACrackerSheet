@@ -1,0 +1,44 @@
+/*Reverse stack using recursion */
+
+import java.io.*;
+import java.util.*;
+
+class GFG {
+	public static void main (String[] args) {
+		
+		for(int i=1; i<=5; i++){
+		    stk.push(i);
+		}
+		
+		reverse();
+		
+		for(int i: stk){
+		    System.out.println(i);
+		}
+	}
+	
+	static Stack<Integer> stk = new Stack<>(); 
+	
+	public static void reverse(){
+	    
+	    if(stk.size()>0){
+	        int a = stk.pop();
+	        reverse();
+	        insertAtBottom(a);
+	    }
+	    
+	}
+	
+	public static void insertAtBottom(int x){
+	    
+	    if(stk.size() == 0){
+	        stk.push(x);
+	    }else{
+	        int a = stk.pop();
+	        insertAtBottom(x);
+	        stk.push(a);
+	    }
+	    
+	}
+
+}

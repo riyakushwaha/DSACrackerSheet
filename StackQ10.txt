@@ -1,0 +1,37 @@
+//Celebrity Problem
+
+class Solution { 
+    int celebrity(int M[][], int n){
+    	// code here 
+    	
+    	Stack<Integer> stk = new Stack<>();
+    	for(int i =0; i<n; i++){
+    	    stk.push(i);
+    	}
+    	
+    	while(stk.size()>=2){
+    	    int i = stk.pop();
+    	    int j = stk.pop();
+    	    
+    	    if(M[i][j] == 1){
+    	        stk.push(j);
+    	    }else{
+    	        stk.push(i);
+    	    }
+    	}
+    	
+    	int cel = stk.pop();
+    	
+    	for(int j = 0; j<M[0].length; j++){
+    	   if(j != cel){
+    	    if(M[cel][j] == 1 || M[j][cel] == 0){
+    	       cel = -1;
+    	       break;
+    	    }}
+    	}
+    	
+    	return cel;
+    	
+    	
+    }
+}

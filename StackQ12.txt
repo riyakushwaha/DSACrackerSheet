@@ -1,0 +1,35 @@
+//Evaluation of Postfix Expression
+
+class Solution{
+    public static int evaluatePostFix(String S){
+        // Your code here
+        
+        Stack<Integer> stk = new Stack<>();
+        
+        for(int i = 0; i<S.length(); i++){
+            
+            char ch = S.charAt(i);
+            if(Character.isDigit(ch)){
+                stk.push(ch - '0');
+            }else{
+                
+                int ch2 = stk.pop();
+                int ch1 = stk.pop();
+                
+                if(ch == '*'){
+                    stk.push(ch1 * ch2);
+                }else if(ch == '+'){
+                    stk.push(ch1 + ch2);
+                }else if(ch == '-'){
+                    stk.push(ch1 - ch2);
+                }else{
+                    stk.push(ch1 / ch2);
+                }
+            }
+            
+        }
+        
+        return stk.pop();
+    
+    }
+}

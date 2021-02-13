@@ -1,0 +1,77 @@
+import java.io.*;
+import java.util.*;
+class GFG
+{
+    public static void main(String args[])throws IOException
+    {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        
+        while(t-- > 0)
+        {
+            int r = sc.nextInt();
+            int c = sc.nextInt();
+            
+            int matrix[][] = new int[r][c];
+            
+            for(int i = 0; i < r; i++)
+            {
+                for(int j = 0; j < c; j++)
+                 matrix[i][j] = sc.nextInt();
+            }
+            Solution ob = new Solution();
+            ArrayList<Integer> ans = ob.spirallyTraverse(matrix, r, c);
+            for (Integer val: ans) 
+                System.out.print(val+" "); 
+            System.out.println();
+        }
+    }
+}// } Driver Code Ends
+
+
+class Solution{
+    static ArrayList<Integer> spirallyTraverse(int matrix[][], int r, int c)
+    {
+        // code here 
+        int lr = 0;
+        int lc = 0;
+        int mr = r-1;
+        int mc = c-1;
+        int entries = r*c;
+        int count = 0;
+        ArrayList<Integer> arr = new ArrayList<>();
+        while(count < entries)
+        {
+            for(int i=lc; i<=mc && count < entries; i++)
+            {
+                arr.add(matrix[lr][i]);
+                count++;
+            }
+            lr++;
+            
+            for(int i= lr; i<=mr && count < entries ; i++)
+            {
+                arr.add(matrix[i][mc]);
+                count++;
+            }
+            mc--;
+            
+            for(int i= mc; i>=lc && count < entries; i--)
+            {
+                arr.add(matrix[mr][i]);
+                count++;
+            }
+            mr--;
+            
+            for(int i=mr; i>=lr && count < entries; i--)
+            {
+                arr.add(matrix[i][lc]);
+                count++;
+            }
+            lc++;
+        }
+        
+        return arr;
+        
+    }
+}
