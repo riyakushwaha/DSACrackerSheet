@@ -1,0 +1,12 @@
+class GfG{
+    public Queue<Integer> rev(Queue<Integer> q){
+        //add code here.
+        if(q.size()>0){
+            int a = q.remove();
+            rev(q);
+            q.add(a);
+        }
+        
+        return q;
+    }
+}
